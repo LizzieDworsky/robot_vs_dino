@@ -16,9 +16,10 @@ class Battlefield:
     
     def battle_phase(self):
         while self.robot.health > 0 and self.dinosaur.health > 0:
-            if self.robot.health > 0:
+            user_action = input (f"Who will attack next? If {self.robot.name} enter 1, if {self.dinosaur.name} enter 2: ")
+            if user_action == "1" and self.robot.health > 0:
                 self.robot.robo_attack(self.dinosaur)
-            if self.dinosaur.health > 0:
+            if user_action == "2" and self.dinosaur.health > 0:
                 self.dinosaur.dino_attack(self.robot)
     
     def display_winner(self):
