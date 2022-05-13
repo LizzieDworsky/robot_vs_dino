@@ -2,7 +2,8 @@ from robot import Robot
 from weapon import Weapon
 
 class Fleet:
-    def __init__(self):
+    def __init__(self, name):
+        self.name = name
         self.robots = [Robot("General Grievous"), Robot("Commando Droid"), Robot("Droideka")]
 
     def unequip_all_weapons(self):

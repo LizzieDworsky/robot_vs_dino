@@ -7,8 +7,8 @@ class Battlefield:
     def __init__(self):
         self.robot = Robot("The Iron Giant")
         self.dinosaur = Dinosaur("Godzilla", 50)
-        self.fleet = [Fleet()]
-        self.herd = []
+        self.fleet = Fleet("Separatist droids")
+        self.herd = Herd("Blue's pack")
 
     def run_game_one_vs_one(self):
         self.display_welcome_one_vs_one()
@@ -48,11 +48,14 @@ class Battlefield:
     def run_game_fleet_vs_herd(self):
         self.display_welcome_fleet_vs_herd()
         self.battle_phase_fleet_vs_herd()
-        pass
+        self.display_winner_fleet_vs_herd()
 
     def display_welcome_fleet_vs_herd(self):
-        print ("The battle is about to begin! Separatist droids vs Blue's pack")
+        print (f"The battle is about to begin! {self.fleet.name} vs {self.herd.name}")
 
     def battle_phase_fleet_vs_herd(self):
-        self.fleet[0].unequip_all_weapons()
-        self.fleet[0].equip_weapons()
+        self.fleet.unequip_all_weapons()
+        self.fleet.equip_weapons()
+
+    def display_winner_fleet_vs_herd(self):
+        pass
