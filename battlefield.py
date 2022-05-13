@@ -56,6 +56,89 @@ class Battlefield:
     def battle_phase_fleet_vs_herd(self):
         self.fleet.unequip_all_weapons()
         self.fleet.equip_weapons()
+        self.herd.blue_attack(self.fleet.robots[0])
+        self.herd.charlie_attack(self.fleet.robots[1])
+        self.herd.delta_attack(self.fleet.robots[2])
+        self.herd.echo_attack(self.fleet.robots[0])
+        self.fleet.grevious_attack(self.herd.pack[0])
+        self.fleet.grevious_attack(self.herd.pack[1])
+        self.fleet.commando_attack(self.herd.pack[2])
+        self.fleet.droideka_attack(self.herd.pack[3])
+
+
+        while (self.fleet.robots[0].health >0 or self.fleet.robots[1].health >0 or self.fleet.robots[2].health >0) and (self.herd.pack[0].health >0 or self.herd.pack[1].health >0 or self.herd.pack[2].health >0 or self.herd.pack[3].health >0):
+            print (f"Currently on the {self.fleet.name} side {self.fleet.robots[0].name} has {str(self.fleet.robots[0].health)} health, {self.fleet.robots[1].name} has {str(self.fleet.robots[1].health)} health, and {self.fleet.robots[2].name} has {str(self.fleet.robots[2].health)} health.")
+            print (f"On the {self.herd.name} side {self.herd.pack[0].name} has {str(self.herd.pack[0].health)} health, {self.herd.pack[1].name} has {str(self.herd.pack[1].health)} health, {self.herd.pack[2].name} has {str(self.herd.pack[2].health)} health, and {self.herd.pack[3].name} has {str(self.herd.pack[3].health)} health.")
+            user_action_one = input (f"Who will attack next? If {self.fleet.name} enter 1, if {self.herd.name} enter 2: ")
+            if user_action_one == "1":
+                user_action_two = input(f"Who would you like use for your attack, if {} enter 1, if {} enter 2, if {} enter 3: ")
+                if user_action_two == "1":
+                    user_action_three = input(f"Who would you like {} to attack, if {} enter 1, if {} enter 2, if {} enter 3, if {} enter 4: ")
+                    if user_action_three == "1":
+                        pass
+                    elif user_action_three == "2":
+                        pass
+                    elif user_action_three == "3":
+                        pass
+                    elif user_action_three == "4": 
+                        pass
+                elif user_action_two == "2":
+                    user_action_three = input(f"Who would you like {} to attack, if {} enter 1, if {} enter 2, if {} enter 3, if {} enter 4: ")
+                    if user_action_three == "1":
+                        pass
+                    elif user_action_three == "2":
+                        pass
+                    elif user_action_three == "3":
+                        pass
+                    elif user_action_three == "4": 
+                        pass
+                elif user_action_one == "3":
+                    user_action_three = input(f"Who would you like {} to attack, if {} enter 1, if {} enter 2, if {} enter 3, if {} enter 4: ")
+                    if user_action_three == "1":
+                        pass
+                    elif user_action_three == "2":
+                        pass
+                    elif user_action_three == "3":
+                        pass
+                    elif user_action_three == "4": 
+                        pass
+            elif user_action_one == "2":
+                user_action_two = input(f"Who would you like to use for your attack, if {} enter 1, if {} enter 2, if{} enter 3, if {} enter 4: ")
+                if user_action_two == "1":
+                    user_action_three = input(f"Who would you like {} to attack, if {} enter 1, if {} enter 2, if {} enter 3: ")
+                    if user_action_three == "1":
+                        pass
+                    elif user_action_three == "2":
+                        pass
+                    elif user_action_three == "3":
+                        pass
+                elif user_action_two == "2":
+                    user_action_three = input(f"Who would you like {} to attack, if {} enter 1, if {} enter 2, if {} enter 3: ")
+                    if user_action_three == "1":
+                        pass
+                    elif user_action_three == "2":
+                        pass
+                    elif user_action_three == "3":
+                        pass
+                elif user_action_two == "3":
+                    user_action_three = input(f"Who would you like {} to attack, if {} enter 1, if {} enter 2, if {} enter 3: ")
+                    if user_action_three == "1":
+                        pass
+                    elif user_action_three == "2":
+                        pass
+                    elif user_action_three == "3":
+                        pass
+                elif user_action_two == "4":
+                    user_action_three = input(f"Who would you like {} to attack, if {} enter 1, if {} enter 2, if {} enter 3: ")
+                    if user_action_three == "1":
+                        pass
+                    elif user_action_three == "2":
+                        pass
+                    elif user_action_three == "3":
+                        pass
 
     def display_winner_fleet_vs_herd(self):
-        pass
+        if self.fleet.robots[0].health == 0 and self.fleet.robots[1].health == 0 and self.fleet.robots[2].health == 0:
+            print (f"{self.herd.name} defeats {self.fleet.name}!")
+        else:
+            print (f"{self.fleet.name} defeats {self.herd.name}!")
