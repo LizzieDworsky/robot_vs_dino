@@ -18,3 +18,18 @@ class Fleet:
 
     def assign_robot_to_fleet(self, robot_name):
         self.robots.append(Robot(robot_name))
+
+    def grevious_attack(self, dinosaur):
+        print (f"{self.robots[0].name} attacks {dinosaur.name} with his {self.robots[0].weapons[0].name} and does {str(self.robots[0].weapons[0].attack_power)} damage.")
+        dinosaur.health -= self.robots[0].weapons[0].attack_power
+        print (f"{dinosaur.name} now has {str(dinosaur.health)} health left.")
+
+    def commando_attack(self, dinosaur):
+        print (f"{self.robots[1].name} attacks {dinosaur.name} with his {self.robots[1].weapons[0].name} and does {str(self.robots[1].weapons[0].attack_power)} damage.")
+        dinosaur.health -= self.robots[1].weapons[0].attack_power
+        print (f"{dinosaur.name} now has {str(dinosaur.health)} health left.")
+
+    def droideka_attack(self, dinosaur):
+        print (f"{self.robots[2].name} attacks {dinosaur.name} with his {self.robots[2].weapons[0].name} and does {str(self.robots[2].weapons[0].attack_power)} damage.")
+        dinosaur.health -= self.robots[2].weapons[0].attack_power
+        print (f"{dinosaur.name} now has {str(dinosaur.health)} health left.")
