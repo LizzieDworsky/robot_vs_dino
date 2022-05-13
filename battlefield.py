@@ -14,6 +14,11 @@ class Battlefield:
         self.display_welcome_one_vs_one()
         self.battle_phase_one_vs_one()
         self.display_winner_one_vs_one()
+
+    def run_game_one_vs_one_randomized(self):
+        self.display_welcome_one_vs_one()
+        self.random_battle_one_vs_one()
+        self.display_winner_one_vs_one()
     
     def display_welcome_one_vs_one(self):
         print (f"The utimate battle begins. Who will win? {self.robot.name} or {self.dinosaur.name}? Let's find out!")
@@ -23,6 +28,14 @@ class Battlefield:
             user_action = input (f"Who will attack next? If {self.robot.name} enter 1, if {self.dinosaur.name} enter 2: ")
             if user_action == "1" and self.robot.health > 0:
                 self.robot.robo_attack(self.dinosaur)
+            if user_action == "2" and self.dinosaur.health > 0:
+                self.dinosaur.dino_attack(self.robot)
+
+    def random_battle_one_vs_one(self):
+        while self.robot.health > 0 and self.dinosaur.health > 0:
+            user_action = input (f"Who will attack next? If {self.robot.name} enter 1, if {self.dinosaur.name} enter 2: ")
+            if user_action == "1" and self.robot.health > 0:
+                self.robot.robo_random_attack(self.dinosaur)
             if user_action == "2" and self.dinosaur.health > 0:
                 self.dinosaur.dino_attack(self.robot)
     

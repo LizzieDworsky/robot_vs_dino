@@ -9,7 +9,7 @@ class Robot:
         self.weapons = [Weapon("Laser Vision", 50), Weapon("Energy Cannon", 100), Weapon("Energy Claw", 25), Weapon("Arm Cannon", 50), Weapon("Tri Scorpion Cannons", 25), Weapon("Spark Spinner Gun", 25)]
     
     def robo_attack(self, dinosaur):
-        user_choice = input (f"Please select what weapon {self.name} should use. For {self.weapons[0].name} with damage {self.weapon[0].attack_power} enter 1. For {self.weapons[1].name} with damage {self.weapons[1].attack_power} enter 2. For {self.weapons[2].name} with damage {self.weapons[2].attack_power} enter 3. ")
+        user_choice = input (f"Please select what weapon {self.name} should use. For {self.weapons[0].name} with damage {self.weapons[0].attack_power} enter 1. For {self.weapons[1].name} with damage {self.weapons[1].attack_power} enter 2. For {self.weapons[2].name} with damage {self.weapons[2].attack_power} enter 3. ")
         if user_choice == "1":
             active_weapon = self.weapons[0]
         elif user_choice == "2":
