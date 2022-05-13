@@ -1,3 +1,4 @@
+import random
 from robot import Robot
 from dinosaur import Dinosaur
 from fleet import Fleet
@@ -40,7 +41,7 @@ class Battlefield:
                 self.dinosaur.dino_attack(self.robot)
     
     def display_winner_one_vs_one(self):
-        if self.robot.health == 0:
+        if self.robot.health <= 0:
             print (f"{self.dinosaur.name} defeats {self.robot.name}!")
         else:
             print (f"{self.robot.name} defeats {self.dinosaur.name}!")
@@ -48,6 +49,11 @@ class Battlefield:
     def run_game_fleet_vs_herd(self):
         self.display_welcome_fleet_vs_herd()
         self.battle_phase_fleet_vs_herd()
+        self.display_winner_fleet_vs_herd()
+
+    def run_game_fleet_vs_herd_randomized(self):
+        self.display_welcome_fleet_vs_herd()
+        self.battle_phase_fleet_vs_herd_randomized()
         self.display_winner_fleet_vs_herd()
 
     def display_welcome_fleet_vs_herd(self):
@@ -128,7 +134,84 @@ class Battlefield:
                         self.herd.echo_attack(self.fleet.robots[2])
 
     def display_winner_fleet_vs_herd(self):
-        if self.fleet.robots[0].health == 0 and self.fleet.robots[1].health == 0 and self.fleet.robots[2].health == 0:
+        if self.fleet.robots[0].health <= 0 and self.fleet.robots[1].health <= 0 and self.fleet.robots[2].health <= 0:
             print (f"{self.herd.name} defeats {self.fleet.name}!")
         else:
             print (f"{self.fleet.name} defeats {self.herd.name}!")
+
+
+    def battle_phase_fleet_vs_herd_randomized(self):
+        self.fleet.unequip_all_weapons()
+        self.fleet.equip_weapons()
+        while (self.fleet.robots[0].health >0 or self.fleet.robots[1].health >0 or self.fleet.robots[2].health >0) and (self.herd.pack[0].health >0 or self.herd.pack[1].health >0 or self.herd.pack[2].health >0 or self.herd.pack[3].health >0):
+            print (f"Currently on the {self.fleet.name} side {self.fleet.robots[0].name} has {str(self.fleet.robots[0].health)} health, {self.fleet.robots[1].name} has {str(self.fleet.robots[1].health)} health, and {self.fleet.robots[2].name} has {str(self.fleet.robots[2].health)} health.")
+            print (f"On the {self.herd.name} side {self.herd.pack[0].name} has {str(self.herd.pack[0].health)} health, {self.herd.pack[1].name} has {str(self.herd.pack[1].health)} health, {self.herd.pack[2].name} has {str(self.herd.pack[2].health)} health, and {self.herd.pack[3].name} has {str(self.herd.pack[3].health)} health.")
+            print ("Who will attack next?")
+            selection_one = random.choice([self.fleet, self.herd])
+            print (f"{selection_one.name} attacks.")
+            if selection_one == self.fleet:
+                selection_two = random.choice([self.fleet.robots[0], self.fleet.robots[1], self.fleet.robots[2]])
+                if selection_two == self.fleet.robots[0]:
+                    selection_three = random.choice([self.herd.pack[0], self.herd.pack[1], self.herd.pack[2], self.herd.pack[3]])
+                    if selection_three == self.herd.pack[0]:
+                        self.fleet.grevious_attack(self.herd.pack[0])
+                    elif selection_three == self.herd.pack[1]:
+                        self.fleet.grevious_attack(self.herd.pack[1])
+                    elif selection_three == self.herd.pack[2]:
+                        self.fleet.grevious_attack(self.herd.pack[2])
+                    elif selection_three == self.herd.pack[3]: 
+                        self.fleet.grevious_attack(self.herd.pack[3])
+                elif selection_two == self.fleet.robots[1]:
+                    selection_three = random.choice([self.herd.pack[0], self.herd.pack[1], self.herd.pack[2], self.herd.pack[3]])
+                    if selection_three == self.herd.pack[0]:
+                        self.fleet.commando_attack(self.herd.pack[0])
+                    elif selection_three == self.herd.pack[1]:
+                        self.fleet.commando_attack(self.herd.pack[1])
+                    elif selection_three == self.herd.pack[2]:
+                        self.fleet.commando_attack(self.herd.pack[2])
+                    elif selection_three == self.herd.pack[3]: 
+                        self.fleet.commando_attack(self.herd.pack[3])
+                elif selection_two == self.fleet.robots[2]:
+                    selection_three = random.choice([self.herd.pack[0], self.herd.pack[1], self.herd.pack[2], self.herd.pack[3]])
+                    if selection_three == self.herd.pack[0]:
+                        self.fleet.droideka_attack(self.herd.pack[0])
+                    elif selection_three == self.herd.pack[1]:
+                        self.fleet.droideka_attack(self.herd.pack[1])
+                    elif selection_three == self.herd.pack[2]:
+                        self.fleet.droideka_attack(self.herd.pack[2])
+                    elif selection_three == self.herd.pack[3]: 
+                        self.fleet.droideka_attack(self.herd.pack[3])
+            elif selection_one == self.herd:
+                selection_two = random.choice([self.herd.pack[0], self.herd.pack[1], self.herd.pack[2], self.herd.pack[3]])
+                if selection_two == self.herd.pack[0]:
+                    selection_three = random.choice([self.fleet.robots[0], self.fleet.robots[1], self.fleet.robots[2]])
+                    if selection_three == self.fleet.robots[0]:
+                        self.herd.blue_attack(self.fleet.robots[0])
+                    elif selection_three == self.fleet.robots[1]:
+                        self.herd.blue_attack(self.fleet.robots[1])
+                    elif selection_three == self.fleet.robots[2]:
+                        self.herd.blue_attack(self.fleet.robots[2])
+                elif selection_two == self.herd.pack[1]:
+                    selection_three = random.choice([self.fleet.robots[0], self.fleet.robots[1], self.fleet.robots[2]])
+                    if selection_three == self.fleet.robots[0]:
+                        self.herd.charlie_attack(self.fleet.robots[0])
+                    elif selection_three == self.fleet.robots[1]:
+                        self.herd.charlie_attack(self.fleet.robots[1])
+                    elif selection_three == self.fleet.robots[2]:
+                        self.herd.charlie_attack(self.fleet.robots[2])
+                elif selection_two == self.herd.pack[2]:
+                    selection_three = random.choice([self.fleet.robots[0], self.fleet.robots[1], self.fleet.robots[2]])
+                    if selection_three == self.fleet.robots[0]:
+                        self.herd.delta_attack(self.fleet.robots[0])
+                    elif selection_three == self.fleet.robots[1]:
+                        self.herd.delta_attack(self.fleet.robots[1])
+                    elif selection_three == self.fleet.robots[2]:
+                        self.herd.delta_attack(self.fleet.robots[2])
+                elif selection_two == self.herd.pack[3]:
+                    selection_three = random.choice([self.fleet.robots[0], self.fleet.robots[1], self.fleet.robots[2]])
+                    if selection_three == self.fleet.robots[0]:
+                        self.herd.echo_attack(self.fleet.robots[0])
+                    elif selection_three == self.fleet.robots[1]:
+                        self.herd.echo_attack(self.fleet.robots[1])
+                    elif selection_three == self.fleet.robots[2]:
+                        self.herd.echo_attack(self.fleet.robots[2])
